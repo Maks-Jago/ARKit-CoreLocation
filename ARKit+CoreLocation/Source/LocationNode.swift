@@ -80,9 +80,13 @@ open class LocationAnnotationNode: LocationNode {
         
         super.init(location: location)
         
-        let billboardConstraint = SCNBillboardConstraint()
-        billboardConstraint.freeAxes = SCNBillboardAxis.Y
-        constraints = [billboardConstraint]
+        if #available(iOS 9.0, *) {
+            let billboardConstraint = SCNBillboardConstraint()
+            billboardConstraint.freeAxes = SCNBillboardAxis.Y
+            constraints = [billboardConstraint]
+        } else {
+            // Fallback on earlier versions
+        }
         
         addChildNode(annotationNode)
     }

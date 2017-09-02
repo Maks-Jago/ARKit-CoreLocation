@@ -12,16 +12,21 @@ import CoreLocation
 import MapKit
 
 public protocol SceneLocationViewDelegate: class {
+    @available(iOS 11.0, *)
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation)
+    @available(iOS 11.0, *)
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation)
     
     ///After a node's location is initially set based on current location,
     ///it is later confirmed once the user moves far enough away from it.
     ///This update uses location data collected since the node was placed to give a more accurate location.
+    @available(iOS 11.0, *)
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode)
     
+    @available(iOS 11.0, *)
     func sceneLocationViewDidSetupSceneNode(sceneLocationView: SceneLocationView, sceneNode: SCNNode)
     
+    @available(iOS 11.0, *)
     func sceneLocationViewDidUpdateLocationAndScaleOfLocationNode(sceneLocationView: SceneLocationView, locationNode: LocationNode)
 }
 
@@ -37,6 +42,7 @@ public enum LocationEstimateMethod {
 }
 
 //Should conform to delegate here, add in future commit
+@available(iOS 11.0, *)
 public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
     ///The limit to the scene, in terms of what data is considered reasonably accurate.
     ///Measured in meters.
@@ -485,6 +491,7 @@ public class SceneLocationView: ARSCNView, ARSCNViewDelegate {
 }
 
 //MARK: LocationManager
+@available(iOS 11.0, *)
 extension SceneLocationView: LocationManagerDelegate {
     func locationManagerDidUpdateLocation(_ locationManager: LocationManager, location: CLLocation) {
         addSceneLocationEstimate(location: location)
