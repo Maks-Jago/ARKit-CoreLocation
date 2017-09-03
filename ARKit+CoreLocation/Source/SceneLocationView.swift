@@ -11,7 +11,7 @@ import ARKit
 import CoreLocation
 import MapKit
 
-public protocol SceneLocationViewDelegate: class {
+@objc public protocol SceneLocationViewDelegate: class {
     @available(iOS 11.0, *)
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation)
     @available(iOS 11.0, *)
